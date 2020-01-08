@@ -1,7 +1,7 @@
-import { FishController } from './../controllers/fishController';
+import { FishController } from '../controllers/fishController';
 
 export class FishRoutes {
-    constructor(app) {
+    constructor(app: any) {
         var fishesList = new FishController();
 
         app.route('/fishes/:filter')

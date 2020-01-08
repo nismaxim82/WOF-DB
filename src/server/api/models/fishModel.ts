@@ -18,6 +18,10 @@ var fishSchema = new Schema({
     },
 });
 
-console.log(fishSchema);
+export class Fish {
+    model: any;
 
-export default mongoose.model('Fishes', fishSchema);
+    constructor() {
+        this.model = mongoose.model('Fishes', fishSchema);
+    }
+}
