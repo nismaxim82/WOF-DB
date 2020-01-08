@@ -1,18 +1,27 @@
 import mongoose from 'mongoose';
-const Fish = mongoose.model('Fishes');
+import Fish from '../models/fishModel';
 
 export class FishController {
     getAllFishes(req: any, res: any) {
-        Fish.find({}, (err, task) => {
+        console.log('api getAllFishes');
+        Fish.find({}, (err, result) => {
             if (err)
                 res.send(err);
-            res.json(task);
+            console.log(err, result);
+            res.json(result);
         });
     }
 
-    getFish() { }
+    getFish(req: any, res: any) {
+        console.log(req.params);
+        res.send('OK');
+    }
 
-    updateFish() { }
+    creatFish() { }
+
+    updateFish(req: any, res: any) {
+        console.log(req);
+    }
 
     deleteFish() { }
 }
