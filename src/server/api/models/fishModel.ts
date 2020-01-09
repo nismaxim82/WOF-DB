@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 var fishSchema = new Schema({
     name: {
+        unique: true,
+        dropDups: true,
         type: String,
         index: true,
         required: 'Enter the name of the fish'

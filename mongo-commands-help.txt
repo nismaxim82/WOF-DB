@@ -1,0 +1,8 @@
+# make backup/dump
+mongodump -d <database_name> -o <directory_backup>
+# restore from backup/dump
+mongorestore -d <database_name> <directory_backup>
+# create symbolink link on the data base path "E:\data\WOF.45DB" (to create this link we must delete folder WOF.45DB from this path)
+mklink /J "E:\data\WOF.45DB" "E:\Projects\React\WOF-DB\data"
+# add this property to the MongoDB config file
+directoryPerDB: true

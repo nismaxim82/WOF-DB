@@ -7,9 +7,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // mongoose instance connection url connection
+const dbConnection = true ? 'mongodb://localhost:27017/WOF123-DB'
+  : 'mongodb+srv://maxim:Qwe12345@wof-db-3o8su.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.Promise = global.Promise;
 mongoose
-  .connect('mongodb+srv://maxim:Qwe12345@wof-db-3o8su.mongodb.net/test?retryWrites=true&w=majority', {
+  .connect(dbConnection, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
