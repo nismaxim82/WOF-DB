@@ -1,16 +1,8 @@
 import Fish from '../models/fishModel';
+import { CrudController } from './crudController';
 
-export class FishController {
-    getAllFishes(req: any, res: any) {
-        Fish.find({}, (err, result) => {
-            if (err)
-                res.send(err);
-            else
-                res.json(result);
-        });
-    }
-
-    getFish(req: any, res: any) {
+export class FishController extends CrudController {
+    public create(req: import("express").Request<import("express-serve-static-core").ParamsDictionary>, res: import("express").Response): void {
         Fish.init().then(() => {
             const new_fish = new Fish({
                 name: 'ABC ' + Math.random()
@@ -24,11 +16,23 @@ export class FishController {
         });
     }
 
-    creatFish() { }
-
-    updateFish(req: any, res: any) {
-        console.log(req);
+    public read(req: import("express").Request<import("express-serve-static-core").ParamsDictionary>, res: import("express").Response): void {
+        const params = {
+            name: req.params.name
+        };
+        Fish.find(params, (err, result) => {
+            if (err)
+                res.send(err);
+            else
+                res.json(result);
+        });
     }
 
-    deleteFish() { }
+    public update(req: import("express").Request<import("express-serve-static-core").ParamsDictionary>, res: import("express").Response): void {
+        throw new Error("Method not implemented.");
+    }
+
+    public delete(req: import("express").Request<import("express-serve-static-core").ParamsDictionary>, res: import("express").Response): void {
+        throw new Error("Method not implemented.");
+    }
 }

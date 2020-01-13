@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import { FishRoutes } from './api/routes/fishRoutes';
+import { fishRouter } from './api/routes';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -21,7 +21,7 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-new FishRoutes(app);
+app.use('/api/fishes', fishRouter);
 
 app.listen(port);
 
